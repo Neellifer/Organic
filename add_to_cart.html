@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -10,7 +10,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NatureBloom Organics - Add to Cart</title>
+    <title>NatureBloom Organics - Item Added to Cart</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Confirmation page for adding items to your cart at NatureBloom Organics. Continue shopping for organic products or view your cart.">
+    <meta name="keywords" content="cart, add to cart, organic shopping, NatureBloom Organics, online store">
+    <meta name="author" content="NatureBloom Organics">
+    <link rel="canonical" href="https://yourwebsite.com/add_to_cart.html"> <!-- Replace with your actual domain -->
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -35,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRHK497F"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -75,7 +81,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     Continue Shopping
                 </a>
                 <a href="#" class="inline-block bg-gray-200 text-gray-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-300 transition duration-300 transform hover:scale-105">
-                    View Cart (0)
+                    View Cart (<span id="cart-count">0</span>)
                 </a>
             </div>
         </div>
@@ -95,6 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const productName = urlParams.get('product');
             const productPrice = urlParams.get('price');
             const productDetailsElement = document.getElementById('product-details');
+            const cartCountElement = document.getElementById('cart-count');
 
             if (productName && productPrice) {
                 productDetailsElement.textContent = `"${decodeURIComponent(productName)}" has been added to your cart for $${parseFloat(productPrice).toFixed(2)}.`;
@@ -109,8 +116,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 localStorage.setItem('cartCount', cartCount);
             }
 
+            cartCountElement.textContent = cartCount;
+
             const viewCartButton = document.querySelector('a[href="#"]'); // The "View Cart" button
-            viewCartButton.textContent = `View Cart (${cartCount})`;
             viewCartButton.onclick = function(e) {
                 e.preventDefault();
                 alert('This is a demo cart. In a real application, you would see your cart items here!');
