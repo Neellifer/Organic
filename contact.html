@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W25KKTEHH4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -68,7 +68,7 @@
                 <!-- Contact Form -->
                 <div>
                     <h3 class="text-2xl font-semibold text-green-800 mb-6">Send Us a Message</h3>
-                    <form class="space-y-6">
+                    <form class="space-y-6" action="thank_you.html" method="GET">
                         <div>
                             <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
                             <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
@@ -141,27 +141,8 @@
         document.querySelector('#contact form').addEventListener('submit', function(e) {
             e.preventDefault();
             // In a real application, you would send this data to a server.
-            // For now, we'll just show a simple message.
-            const submitButton = e.target.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-
-            setTimeout(() => {
-                // Simulate success
-                submitButton.textContent = 'Message Sent!';
-                submitButton.classList.remove('bg-green-600', 'hover:bg-green-700');
-                submitButton.classList.add('bg-gray-500');
-                // You might clear the form here: e.target.reset();
-
-                // Reset button after a few seconds
-                setTimeout(() => {
-                    submitButton.textContent = originalButtonText;
-                    submitButton.classList.remove('bg-gray-500');
-                    submitButton.classList.add('bg-green-600', 'hover:bg-green-700');
-                    submitButton.disabled = false;
-                }, 3000);
-            }, 1500);
+            // For now, we'll redirect to the thank you page.
+            window.location.href = 'thank_you.html';
         });
     </script>
 </body>
